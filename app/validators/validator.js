@@ -1,3 +1,8 @@
+/**
+ * validators中放置本项目中使用的各种校验器
+ *  http请求参数校验器
+ */
+
 const {
   LinValidator,
   Rule

@@ -10,7 +10,16 @@ class InitManager {
   // 入口方法，需要传入app对象
   static initCore(app) {
     InitManager.app = app
+    InitManager.loadConfig()
     InitManager.initLoadRouters()
+    InitManager.loadHttpException()
+  }
+
+  // 加载配置文件
+  static loadConfig(path = '') {
+    const configPath = path || process.cwd() + '/config/config.js'
+    const config = require(configPath)
+    global.config = config
   }
 
   // 加载全部路由
@@ -25,6 +34,12 @@ class InitManager {
         InitManager.app.use(obj.routes())
       }
     }
+  }
+
+  // 将所有的异常类装载到global.errs
+  static loadHttpException(){
+    const errors = require('./http-exception')
+    global.errs = errors
   }
 }
 

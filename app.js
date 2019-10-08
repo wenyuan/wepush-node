@@ -6,6 +6,9 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
+const catchError = require('./middlewares/exception')
+app.use(catchError)
+
 // const index = require('./app/routes/index')
 // const users = require('./app/routes/users')
 
