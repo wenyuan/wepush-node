@@ -6,7 +6,7 @@ module.exports = {
   // prod
   environment:'dev',
   database:{
-    dbName:'7yue',
+    dbName:'wepush',
     host:'localhost',
     port:3306,
     user:'root',
