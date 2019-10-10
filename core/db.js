@@ -10,20 +10,19 @@ const {
 
 const sequelize = new Sequelize(dbName,user,password,{
   dialect:'mysql',
-  host,
-  port,
+  host: host,
+  port: port,
   logging:true,
 
   timezone: '+08:00',
   define:{
-    //create_time  update_time delete_time
-    timestamps:true,
-    paranoid:true,
-    createdAt:'created_at',
+    timestamps:true, // 是否需要增加createdAt、updatedAt、deletedAt字段，默认为 true
+    paranoid:true, // true: 删除数据时不会进行物理删除，而是设置deletedAt为当前时间（paranoid只有在启用时间戳时才能工作）
+    createdAt:'created_at', // 将字段改个名
     updatedAt:'updated_at',
     deletedAt:'deleted_at',
-    underscored:true,
-    freezeTableName:true,
+    underscored:true, // 将自动设置所有属性的字段参数为下划线命名方式（不会覆盖已经定义的字段选项）
+    freezeTableName:true, // 默认情况下，表名自动复数；使用 freezeTableName:true 参数可以为特定模型停止此行为
     scopes:{
       bh:{
         attributes:{
