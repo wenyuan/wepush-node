@@ -8,9 +8,7 @@ const {
   Rule
 } = require('../../core/lin-validator-v2')
 
-const {
-  User
-} = require('../models/user')
+const {User} = require('../models/user')
 const {
   LoginType,
   ArtType
@@ -22,7 +20,7 @@ class PositiveIntegerValidator extends LinValidator {
     this.id = [
       new Rule('isInt', '需要是正整数', {
         min: 1
-      }),
+      })
     ]
   }
 }
@@ -47,7 +45,7 @@ class RegisterValidator extends LinValidator {
       new Rule('isLength', '昵称不符合长度规范', {
         min: 4,
         max: 32
-      }),
+      })
     ]
   }
 
@@ -159,7 +157,6 @@ class Checker {
 
   }
 }
-
 
 
 class LikeValidator extends PositiveIntegerValidator {

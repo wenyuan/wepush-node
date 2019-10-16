@@ -9,7 +9,6 @@ const logger = require('koa-logger')
 const catchError = require('./middlewares/exception')
 app.use(catchError)
 
-require('./app/models/user')
 
 // const index = require('./app/routes/index')
 // const users = require('./app/routes/users')
