@@ -5,7 +5,6 @@ const {db} = require('../../core/db')
 
 const {Sequelize, Model} = require('sequelize')
 
-// define
 class User extends Model {
   static async verifyEmailPassword(email, plainPassword) {
     const user = await User.findOne({
@@ -16,7 +15,6 @@ class User extends Model {
     if (!user) {
       throw new global.errs.AuthFailed('账号不存在')
     }
-    // user.password === plainPassword
     const correct = bcrypt.compareSync(
       plainPassword, user.password)
     if(!correct){
@@ -53,8 +51,6 @@ User.init({
     unique: true
   },
   password: {
-    //扩展 设计模式 观察者模式
-    //ES6 Reflect Vue3.0
     type: Sequelize.STRING,
     set(val) {
       const salt = bcrypt.genSaltSync(10)
